@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+    <h1>Book Details</h1>
+    <ul>
+        <li><%= book.title %> </li>
+        <li><%= book.description %> </li>
+        <li><%= book.price %> </li>
+        <li><%= book.author %> </li>
+    </ul>
+    <a class="btn-primary" href='/books/<%= book.id %>/edit'  >Update</a>
+    <a class="btn-primary" href='/books/<%= book.id %>/delete'  >Delete</a>
+
+    <form action="/books/<%= book.id%>/comments" method="POST">
+        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        <input type="submit">
+    </form>
+    <h2>Comments</h2>
+<% comments.forEach(element => { %>
+    <h3> <%= element.content %> </h3>
+    <a class="btn-primary" href='/comments/<%= element.id %>/edit'  >Edit</a>
+    <a class="btn-primary" href='/comments/<%= element.id %>/delete'  >Delete</a>
+<% }); %> 
+    <h2></h2>
+</body>
+</html>
